@@ -52,7 +52,7 @@ class Plugin(PluginBase):
                             subtitle=" ",
                             content=message,
                             icon=f'{self.plugin_dir}\img\Favicon.png',
-                            duration=10000
+                            duration=15000
                         )
                     except json.JSONDecodeError:
                         print("接收到无法解析的消息")
