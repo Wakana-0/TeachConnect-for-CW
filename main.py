@@ -7,7 +7,6 @@ from PyQt5.QtWidgets import QHBoxLayout
 from qfluentwidgets import ImageLabel, LineEdit
 import socket
 import json
-import threading
 
 # 自定义小组件
 WIDGET_CODE = 'widget_test.ui'
@@ -25,8 +24,7 @@ class Plugin(PluginBase):
 
     def execute(self):  # 自启动执行部分
         self.plugin_dir = self.cw_contexts['PLUGIN_PATH']
-        ipdrss = socket.gethostbyname(socket.gethostname()) #获取本机IP地址
-        
+
         # 创建服务器实例并保存为成员变量
         self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server.bind(("0.0.0.0", 11223))
@@ -46,14 +44,14 @@ class Plugin(PluginBase):
                         msg = json.loads(data.decode("utf-8"))
                         name = msg.get("name", "未知")
                         message = msg.get("message", "无内容")
-                        
+
                         self.method.send_notification(
                             state=4,
                             title=name,
-                            subtitle=" ",
+                            subtitle="的信息：",
                             content=message,
                             icon=f'{self.plugin_dir}\img\Favicon.png',
-                            duration=5000
+                            duration=15000
                         )
                     except json.JSONDecodeError:
                         print("接收到无法解析的消息")
