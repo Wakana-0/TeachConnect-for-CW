@@ -1,7 +1,7 @@
 {
     "name": "TeachConnect CW插件版",
     "description": "这是TeachConnect CW插件版",
-    "version": "1.0.0",
+    "version": "1.0.0a",
     "plugin_ver": 1,
     "author": "Wakana_0",
     "settings": false,
